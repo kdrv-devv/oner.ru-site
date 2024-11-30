@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container{
+  width: 90%;
+  margin: 0 auto;
+}
+a{
+  text-decoration: none;
+}
+button{
+  border: none;
+  cursor: pointer;
+}
+
+.korzinka-button{
+  border: 1px solid #DEDEE2 ;
+  border-radius: 8px;
+
+}
+
+.showcase1{
+  background: url("./components/home-components/showcase/imges/showcase1.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
