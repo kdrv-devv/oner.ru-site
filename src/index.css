@@ -1,33 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Jaro:opsz@6..72&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-.container{
+.container {
   width: 90%;
   margin: 0 auto;
+  font-family: "Roboto Condensed", sans-serif;
 }
-a{
+a {
   text-decoration: none;
 }
-button{
+button {
   border: none;
   cursor: pointer;
 }
 
-.korzinka-button{
-  border: 1px solid #DEDEE2 ;
+.korzinka-button {
+  border: 1px solid #dedee2;
   border-radius: 8px;
-
 }
 
-.showcase1{
+.showcase1 {
   background: url("./components/home-components/showcase/imges/showcase1.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+.auto-oil-see {
+  background-color: #f4f5f6;
+  width: 148px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  &:hover {
+    background-color: #d6d8d9;
+  }
+}
+
+.oilcard1 {
+  background: url("./components/home-components/autooils/imges/card1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.category-type-Item1{
+  background: url("./components/home-components/autooils/imges/type-item1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.category-type-Item2{
+  background: url("./components/home-components/autooils/imges/type-item2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.category-type-Item3{
+  background: url("./components/home-components/autooils/imges/type-item-3.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.questiondiv{
+  border: 1px solid #FFFFFF33;
+  border-radius: 10px;
+  
+}
+
+.more-category-item{
+  &:hover{
+    background-color: #f4f5f6;
+  }
 }

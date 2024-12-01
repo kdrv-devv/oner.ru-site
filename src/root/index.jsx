@@ -13,5 +13,4 @@ export const root = createBrowserRouter([
         path:"/korzinka",
         element:<Korzinka/>
     },
-
 ])

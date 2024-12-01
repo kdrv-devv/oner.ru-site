@@ -8,9 +8,9 @@ const Category = () => {
 
   useEffect(() => {
     axios
-      .get("https://backend-oner.vercel.app/categories")
+      .get("https://674a9424868020296634d45d.mockapi.io/categories")
       .then((data) => setData(data.data))
-      .catch((error) => setEror(error));
+      .catch((error) => setEror(error.message));
   }, []);
 
   return (
@@ -20,9 +20,9 @@ const Category = () => {
           {data.map((value) => (
             <div
               key={value.id}
-              className="category-item    p-[20px] rounded-[5px]   h-[100px] flex items-center gap-[22px] [transition:0.6]  [box-shadow:0_0_2px_rgb(168,_167,_167)] hover:[box-shadow:0_0_5px_rgb(168,_167,_167)]"
+              className="category-item  cursor-pointer   p-[20px] rounded-[5px]   h-[100px] flex items-center gap-[22px] [transition:0.6]  [box-shadow:0_0_2px_rgb(168,_167,_167)] hover:[box-shadow:0_0_5px_rgb(168,_167,_167)] "
             >
-              <img src={item1} alt="" />
+              <img className="w-[40px] h-[40px]" src={value.image} alt="" />
               <div className="flex flex-col gap-[7px] w-full">
                 <h5 className="font-normal text-[16px] text-[#1B1D1F]">
                   {value.name}
