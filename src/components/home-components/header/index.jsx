@@ -183,7 +183,9 @@ const Header = () => {
       </header>
 
       <Drawer title="Корзина" onClose={onClose} open={openn}>
-          <h4 className="w-[90%]">Mashetta maxsulotlar bo'ladi kelajakda </h4>
+         <div className="w-[95%] h-[100%]">
+                <h1>Salom</h1>
+         </div>
       </Drawer>
 
 

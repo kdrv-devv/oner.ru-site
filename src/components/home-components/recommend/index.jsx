@@ -43,7 +43,7 @@ const Recommend = () => {
         <h5 className="font-bold text-[24px] text-[#1B1D1F]">Рекомендуем</h5>
       <div className="auto-oil-cards  mt-[23px] grid grid-cols-[repeat(4,1fr)] gap-[20px] ">
         {data.map((value) => (
-          <div className="oil-card h-[470px]  rounded-[10px] [box-shadow:0_0_7px_rgb(168,_167,_167)]   flex flex-col justify-between  ">
+          <div key={Date.now()} className="oil-card h-[470px]  rounded-[10px] [box-shadow:0_0_7px_rgb(168,_167,_167)]   flex flex-col justify-between  ">
             <div className="oil-card-top w-full h-[60%]  flex items-center p-[20px]">
               <img className="w-full h-full" src={value.imagie} alt="img" />
             </div>
