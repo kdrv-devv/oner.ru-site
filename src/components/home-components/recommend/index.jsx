@@ -2,15 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import 'antd/dist/reset.css';
-import { notification } from 'antd';
+import { notification, Skeleton } from 'antd';
 const key = 'updatable';
 import { IoCartOutline } from "react-icons/io5";
 import { CheckCircleOutlined } from '@ant-design/icons';
+import { IoMdHeartEmpty } from "react-icons/io";
 
 const Recommend = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-
+  const [loading, setLoading] = useState(true)
   const [api, contextHolder] = notification.useNotification();
   const openNotification = (title) => {
     api.open({
@@ -32,7 +33,7 @@ const Recommend = () => {
   useEffect(() => {
     axios
       .get("https://backend-oner.vercel.app/recomemded")
-      .then((data) => setData(data.data))
+      .then((data) => {setData(data.data),setLoading(false)})
       .catch((error) => setError(error.message));
   }, []);
 
@@ -43,11 +44,35 @@ const Recommend = () => {
         <h5 className="font-bold text-[24px] text-[#1B1D1F]">Рекомендуем</h5>
       <div className="auto-oil-cards  mt-[23px] grid grid-cols-[repeat(4,1fr)] gap-[20px] ">
         {data.map((value) => (
-          <div key={Date.now()} className="oil-card h-[470px]  rounded-[10px] [box-shadow:0_0_7px_rgb(168,_167,_167)]   flex flex-col justify-between  ">
+          <div key={Date.now()} className="oil-card h-[470px] relative  rounded-[10px] [box-shadow:0_0_7px_rgb(168,_167,_167)]   flex flex-col justify-between  ">
+            
+            {
+              loading?(
+                <Skeleton.Image style={{width:"100%", height:"250px"}}/>
+              ):(
+                <>
+                   <button className="w-[40px] flex items-center justify-center  h-[40px] rounded-[100%] bg-[#f3f3f4cb] absolute top-[10px] right-[10px]">
+                  <IoMdHeartEmpty style={{fontSize:22}}  />
+                  </button>
+           
+           
             <div className="oil-card-top w-full h-[60%]  flex items-center p-[20px]">
               <img className="w-full h-full" src={value.imagie} alt="img" />
             </div>
-            <div className="oil-card-bottom p-[20px] ">
+                </>
+
+              )
+
+            }
+
+
+            {
+              loading?(
+                <Skeleton active paragraph={{ rows: 2 }}/>
+              ):(
+                  <>
+                  
+                  <div className="oil-card-bottom p-[20px] ">
               <div className="star flex items-center gap-[6px] justify-between">
                 <h6 className=" font-normal w-[40%] text-[14px] text-[#7A7680]">
                   {`Артикул:${value.article}`}
@@ -79,6 +104,11 @@ const Recommend = () => {
                 </button>
               </div>
             </div>
+                  </>
+              )
+            }
+
+ 
           </div>
         ))}
       </div>

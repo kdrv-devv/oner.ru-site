@@ -1,7 +1,7 @@
 import React from "react";
 import { RiTelegramLine } from "react-icons/ri";
 import { FaPhone } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa6";
 import headerLogo from "./imges/header-logo-svg.svg";
@@ -11,7 +11,9 @@ import { useState } from "react";
 import { Modal } from "antd";
 import moreImg from "./imges/Group.png";
 import moreCategory from "./imges/more-category.png";
-import { Drawer } from 'antd';
+import { Drawer } from "antd";
+import { FaRegHeart } from "react-icons/fa";
+import  "./media-css/index.scss"
 const Header = () => {
   const [open, setOpen] = useState(false);
 
@@ -23,6 +25,8 @@ const Header = () => {
     setOpenn(false);
   };
 
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -130,13 +134,20 @@ const Header = () => {
                   className="flex items-center justify-center gap-[10px]"
                 >
                   <FaRegUser style={{ color: "#6B59CC", fontSize: 20 }} />{" "}
-                  <h5 className="text-[14px] text-[#000000] font-normal">
+                  <h5 className="text-[14px] text-[#000000] font-normal max-[1066px]:hidden">
                     Вход / Регистрация
                   </h5>
                 </Link>
               </div>
 
-              <button  onClick={showDrawer} className="korzinka-button  flex items-center justify-center gap-2 p-[10px]">
+              <button   onClick={showDrawer} className="all-liked-products border-[1px_solid_black] w-[40px] h-[40px] flex items-center justify-center rounded-lg">
+                <FaRegHeart style={{color:"#FB6019" ,fontSize:20}} />
+              </button>
+
+              <button
+                onClick={()=>{navigate("/korzinka")}}
+                className="korzinka-button  flex items-center justify-center gap-2 p-[10px]"
+              >
                 <MdOutlineShoppingCart
                   style={{ color: "#410F9E", fontSize: 19 }}
                 />
@@ -148,7 +159,7 @@ const Header = () => {
             </div>
           </div>
 
-          <nav className="header-bottom flex items-center gap-[36px]  py-[15px]">
+          <nav className="header-bottom  flex items-center gap-[36px]  py-[15px]  [&>button]:!text-[0.9rem]">
             <button
               onClick={() => setOpen(true)}
               className=" flex rounded-[8px] items-center justify-center gap-[10px] w-[152px] h-[44px] transition-all bg-[#5946D7] hover:bg-[#362988] "
@@ -182,13 +193,11 @@ const Header = () => {
         </div>
       </header>
 
-      <Drawer title="Корзина" onClose={onClose} open={openn}>
-         <div className="w-[95%] h-[100%]">
-                <h1>Salom</h1>
-         </div>
+      <Drawer title=" Избранное " onClose={onClose} open={openn}>
+        <div className="w-[95%] h-[100%]">
+          <h1>Saralangan maxsulotlar</h1>
+        </div>
       </Drawer>
-
-
     </>
   );
 };
