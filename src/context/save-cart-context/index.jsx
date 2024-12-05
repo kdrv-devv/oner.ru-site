@@ -1,33 +1,34 @@
-// import React, { createContext, useReducer } from 'react'
+import { data } from "flickity";
+import React, { createContext, useReducer } from "react";
+
+const shopAppContext = createContext({})
 
 
-//     const SaveData = createContext({})
+const ShopContext = ({children}) =>{
 
-//     const initialState ={
+  const initialState={
+    data:JSON.parse(localStorage.getItem("shop")) || []
+  }
+  
+  const reducer =(state , {type , value})=>{
+    switch (type) {
+      case "add":
+        const newData = {data:[...state.data,value]}
+        localStorage.setItem("shop", JSON.stringify(newData.data))      
+        return newData 
+  
+      default:
+        break;
         
-//     }
+    }
 
-//     const reducer=(state, action)=>{
-//         switch (action.type) {
-//             case value:
-                
-//                 break;
-        
-//             default:
-//                 break;
-//         }
+  }
 
+  const [state , dispatch] = useReducer(reducer , initialState)
+    return <shopAppContext.Provider value={ {state , dispatch}}>
+              {children}
+           </shopAppContext.Provider>
 
-//     }
+}
 
-
-//     const [state, dispatch] = useReducer(reducer,initialState)
-
-// const SaveCardsDataProvide = ({children}) => {
-
-//   return   <SaveData.Provider>
-//         {children}
-//   </SaveData.Provider>
-// }
-
-// export  {SaveCardsDataProvide,SaveData}
+export { shopAppContext, ShopContext};

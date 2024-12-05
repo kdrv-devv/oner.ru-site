@@ -14,19 +14,24 @@ import moreCategory from "./imges/more-category.png";
 import { Drawer } from "antd";
 import { FaRegHeart } from "react-icons/fa";
 import  "./media-css/index.scss"
+
+
 const Header = () => {
   const [open, setOpen] = useState(false);
-
   const [openn, setOpenn] = useState(false);
+  
   const showDrawer = () => {
     setOpenn(true);
   };
   const onClose = () => {
     setOpenn(false);
   };
-
-
   const navigate = useNavigate()
+
+  // korzinka count
+  const [korzinkaCount , setkorzinkaCount] = useState(12)
+
+
 
   return (
     <>
@@ -143,17 +148,21 @@ const Header = () => {
               <button   onClick={showDrawer} className="all-liked-products border-[1px_solid_black] w-[40px] h-[40px] flex items-center justify-center rounded-lg">
                 <FaRegHeart style={{color:"#FB6019" ,fontSize:20}} />
               </button>
-
               <button
                 onClick={()=>{navigate("/korzinka")}}
                 className="korzinka-button  flex items-center justify-center gap-2 p-[10px]"
               >
+
+
                 <MdOutlineShoppingCart
                   style={{ color: "#410F9E", fontSize: 19 }}
                 />
+
+              
+
                 <h6 className="font-normal text-[14px] text-black">Корзина</h6>
                 <h6 className="flex w-[20px] h-[20px] rounded-[5px] bg-[#FB6019] text-white text-[10px] items-center justify-center">
-                  0
+                  {korzinkaCount}
                 </h6>
               </button>
             </div>
