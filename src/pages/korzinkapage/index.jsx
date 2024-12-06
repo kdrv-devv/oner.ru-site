@@ -1,14 +1,13 @@
 import React from 'react'
 import Header from '../../components/home-components/header'
 import Footer from '../../components/home-components/footer'
+import ReceivedProducts from '../../components/korzinka-components/received-product'
 
 const Korzinka = () => {
   return (
     <>
     <Header/>
-      <div className='korzinka-page w-[90%] m-auto min-h-[300px]'> 
-        
-      </div>  
+      <ReceivedProducts/>  
     <Footer/>
     </>
   )

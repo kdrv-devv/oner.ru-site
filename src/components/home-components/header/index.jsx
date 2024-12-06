@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { RiTelegramLine } from "react-icons/ri";
 import { FaPhone } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,12 +8,13 @@ import headerLogo from "./imges/header-logo-svg.svg";
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { useState } from "react";
-import { Modal } from "antd";
+import { Badge, Modal } from "antd";
 import moreImg from "./imges/Group.png";
 import moreCategory from "./imges/more-category.png";
 import { Drawer } from "antd";
 import { FaRegHeart } from "react-icons/fa";
 import  "./media-css/index.scss"
+import { shopAppContext } from "../../../context/save-cart-context";
 
 
 const Header = () => {
@@ -29,7 +30,11 @@ const Header = () => {
   const navigate = useNavigate()
 
   // korzinka count
-  const [korzinkaCount , setkorzinkaCount] = useState(12)
+
+  const {state} = useContext(shopAppContext)
+
+  const [korzinkaCount , setkorzinkaCount] = useState(state.data.length)
+
 
 
 
@@ -148,22 +153,18 @@ const Header = () => {
               <button   onClick={showDrawer} className="all-liked-products border-[1px_solid_black] w-[40px] h-[40px] flex items-center justify-center rounded-lg">
                 <FaRegHeart style={{color:"#FB6019" ,fontSize:20}} />
               </button>
+              
               <button
                 onClick={()=>{navigate("/korzinka")}}
                 className="korzinka-button  flex items-center justify-center gap-2 p-[10px]"
               >
-
-
-                <MdOutlineShoppingCart
-                  style={{ color: "#410F9E", fontSize: 19 }}
-                />
-
-              
-
+             
                 <h6 className="font-normal text-[14px] text-black">Корзина</h6>
-                <h6 className="flex w-[20px] h-[20px] rounded-[5px] bg-[#FB6019] text-white text-[10px] items-center justify-center">
-                  {korzinkaCount}
-                </h6>
+                <Badge count={state.data.length} showZero>
+                <MdOutlineShoppingCart
+                  style={{ color: "#410F9E", fontSize: 22 }}
+                />
+              </Badge>
               </button>
             </div>
           </div>

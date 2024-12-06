@@ -72,7 +72,7 @@ const AutoOils = () => {
             ) : (
               data.map((value) => (
                 <div
-                  key={value.id}
+                  key={+value.id}
                   className="oil-card relative h-[470px] rounded-[10px] [box-shadow:0_0_7px_rgb(168,_167,_167)] flex flex-col justify-between"
                 >
                   <button className="w-[40px] flex items-center justify-center h-[40px] rounded-[100%] bg-[#f3f3f4cb] absolute top-[10px] right-[10px]">
@@ -82,7 +82,7 @@ const AutoOils = () => {
                   <div className="oil-card-top w-full h-[60%] flex items-center p-[20px]">
                     <img
                       className="w-full h-full"
-                      src={value.image}
+                      src={value.imagie}
                       alt="product"
                     />
                   </div>
@@ -90,7 +90,7 @@ const AutoOils = () => {
                   <div className="oil-card-bottom p-[20px]">
                     <div className="star flex items-center gap-[6px] justify-between">
                       <h6 className="font-normal text-[14px] text-[#7A7680]">
-                        {value.title}
+                        {value.action}
                       </h6>
                       <div className="flex items-center gap-[6px]">
                         <FaStar style={{ color: "goldenrod", fontSize: 11 }} />
@@ -99,20 +99,20 @@ const AutoOils = () => {
                           style={{ color: "goldenrod", fontSize: 11 }}
                         />
                         <p>
-                          4.0 <span className="text-[#5f6469]">(51)</span>
+                          4.0 <span className="text-[#5f6469]">({+value.id + 10})</span>
                         </p>
                       </div>
                     </div>
 
                     <h5 className="font-normal text-[16px] text-[#1B1D1F]">
-                      {value.description}
+                      {value.name}
                     </h5>
 
                     <div className="buy-btn flex items-center justify-between">
                       <h5 className="text-[30px]">
-                        {value.price}
+                        {value.price_current}
                         <sup className="text-[16px] text-[#7A7680]">
-                          {value.price}
+                          {value.price_current + 500}
                         </sup>
                       </h5>
                       <button
